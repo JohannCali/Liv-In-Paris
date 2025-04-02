@@ -1,0 +1,333 @@
+ Station Id                          Station                        Précédent                          Suivant  Temps entre 2 stations  Temps de Changement
+          1                    Porte Maillot                             None                        Argentine                     0.0                  NaN
+          2                        Argentine                    Porte Maillot       Charles de Gaulle - Etoile                     3.0                  NaN
+          3       Charles de Gaulle - Etoile                        Argentine                         George V                     2.0                  3.0
+          4                         George V       Charles de Gaulle - Etoile            Franklin D. Roosevelt                     3.0                  NaN
+          5            Franklin D. Roosevelt                         George V      Champs-Elysées - Clemenceau                     2.0                  3.0
+          6      Champs-Elysées - Clemenceau            Franklin D. Roosevelt                         Concorde                     3.0                  3.0
+          7                         Concorde      Champs-Elysées - Clemenceau                        Tuileries                     2.0                  3.0
+          8                        Tuileries                         Concorde   Palais Royal - Musée du Louvre                     4.0                  NaN
+          9   Palais Royal - Musée du Louvre                        Tuileries                  Louvre - Rivoli                     2.0                  2.0
+         10                  Louvre - Rivoli   Palais Royal - Musée du Louvre                         Châtelet                     3.0                  NaN
+         11                         Châtelet                  Louvre - Rivoli                   Hôtel de Ville                     2.0                  5.0
+         12                   Hôtel de Ville                         Châtelet           Saint-Paul (Le Marais)                     3.0                  2.0
+         13           Saint-Paul (Le Marais)                   Hôtel de Ville                         Bastille                     2.0                  NaN
+         14                         Bastille           Saint-Paul (Le Marais)                     Gare de Lyon                     4.0                  2.0
+         15                     Gare de Lyon                         Bastille                Reuilly - Diderot                     2.0                  4.0
+         16                Reuilly - Diderot                     Gare de Lyon                           Nation                     2.0                  2.0
+         17                           Nation                Reuilly - Diderot               Porte de Vincennes                     2.0                  3.0
+         18               Porte de Vincennes                           Nation             Château de Vincennes                     2.0                  2.0
+         19             Château de Vincennes               Porte de Vincennes                   Porte Dauphine                     1.0                  NaN
+         20                   Porte Dauphine             Château de Vincennes                      Victor Hugo                     0.0                  NaN
+         21                      Victor Hugo                   Porte Dauphine       Charles de Gaulle - Etoile                     2.0                  NaN
+         22       Charles de Gaulle - Etoile                      Victor Hugo                           Ternes                     1.0                  3.0
+         23                           Ternes       Charles de Gaulle - Etoile                       Courcelles                     2.0                  NaN
+         24                       Courcelles                           Ternes                          Monceau                     1.0                  NaN
+         25                          Monceau                       Courcelles                         Villiers                     2.0                  NaN
+         26                         Villiers                          Monceau                             Rome                     1.0                  2.0
+         27                             Rome                         Villiers                  Place de Clichy                     3.0                  NaN
+         28                  Place de Clichy                             Rome                          Blanche                     2.0                  2.0
+         29                          Blanche                  Place de Clichy                          Pigalle                     1.0                  NaN
+         30                          Pigalle                          Blanche                           Anvers                     2.0                  2.0
+         31                           Anvers                          Pigalle            Barbès - Rochechouart                     3.0                  NaN
+         32            Barbès - Rochechouart                           Anvers                      La Chapelle                     2.0                  2.0
+         33                      La Chapelle            Barbès - Rochechouart                       Stalingrad                     5.0                  3.0
+         34                       Stalingrad                      La Chapelle                           Jaurès                     2.0                  2.0
+         35                           Jaurès                       Stalingrad                   Colonel Fabien                     2.0                  2.0
+         36                   Colonel Fabien                           Jaurès                       Belleville                     2.0                  NaN
+         37                       Belleville                   Colonel Fabien                        Couronnes                     2.0                  2.0
+         38                        Couronnes                       Belleville                     Ménilmontant                     2.0                  NaN
+         39                     Ménilmontant                        Couronnes                    Père Lachaise                     1.0                  NaN
+         40                    Père Lachaise                     Ménilmontant                 Philippe Auguste                     1.0                  2.0
+         41                 Philippe Auguste                    Père Lachaise                  Alexandre Dumas                     1.0                  NaN
+         42                  Alexandre Dumas                 Philippe Auguste                            Avron                     2.0                  NaN
+         43                            Avron                  Alexandre Dumas                           Nation                     1.0                  NaN
+         44                           Nation                            Avron              Porte de Champerret                     2.0                  3.0
+         45              Porte de Champerret                           Nation                          Pereire                     2.0                  NaN
+         46                          Pereire              Porte de Champerret                           Wagram                     2.0                  1.0
+         47                           Wagram                          Pereire                      Malesherbes                     1.0                  NaN
+         48                      Malesherbes                           Wagram                         Villiers                     1.0                  NaN
+         49                         Villiers                      Malesherbes                           Europe                     3.0                  2.0
+         50                           Europe                         Villiers                     Saint-Lazare                     2.0                  NaN
+         51                     Saint-Lazare                           Europe                  Havre-Caumartin                     1.0                  4.0
+         52                  Havre-Caumartin                     Saint-Lazare                            Opéra                     1.0                  2.0
+         53                            Opéra                  Havre-Caumartin                 Quatre Septembre                     3.0                  NaN
+         54                 Quatre Septembre                            Opéra                           Bourse                     2.0                  2.0
+         55                           Bourse                 Quatre Septembre                          Sentier                     2.0                  NaN
+         56                          Sentier                           Bourse             Réaumur - Sébastopol                     2.0                  NaN
+         57             Réaumur - Sébastopol                          Sentier                  Arts et Métiers                     2.0                  2.0
+         58                  Arts et Métiers             Réaumur - Sébastopol                           Temple                     2.0                  2.0
+         59                           Temple                  Arts et Métiers                       République                     3.0                  NaN
+         60                       République                           Temple                       Parmentier                     1.0                  3.0
+         61                       Parmentier                       République                   Rue Saint-Maur                     1.0                  3.0
+         62                   Rue Saint-Maur                       Parmentier                    Père Lachaise                     1.0                  NaN
+         63                    Père Lachaise                   Rue Saint-Maur                         Gambetta                     2.0                  2.0
+         64                         Gambetta                    Père Lachaise                Porte de Bagnolet                     1.0                  NaN
+         65                Porte de Bagnolet                         Gambetta                  Porte des Lilas                     2.0                  2.0
+         66                  Porte des Lilas                Porte de Bagnolet                    Saint-Fargeau                     1.0                  1.0
+         67                    Saint-Fargeau                  Porte des Lilas                        Pelleport                     2.0                  NaN
+         68                        Pelleport                    Saint-Fargeau                         Gambetta                     3.0                  NaN
+         69                         Gambetta                        Pelleport            Porte de Clignancourt                     3.0                  NaN
+         70            Porte de Clignancourt                         Gambetta                          Simplon                     2.0                  NaN
+         71                          Simplon            Porte de Clignancourt          Marcadet - Poissonniers                     1.0                  NaN
+         72          Marcadet - Poissonniers                          Simplon                    Château Rouge                     1.0                  1.0
+         73                    Château Rouge          Marcadet - Poissonniers            Barbès - Rochechouart                     2.0                  NaN
+         74            Barbès - Rochechouart                    Château Rouge                     Gare du Nord                     4.0                  2.0
+         75                     Gare du Nord            Barbès - Rochechouart                    Gare de l'Est                     3.0                  4.0
+         76                    Gare de l'Est                     Gare du Nord                    Château d'Eau                     3.0                  3.0
+         77                    Château d'Eau                    Gare de l'Est         Strasbourg - Saint-Denis                     2.0                  NaN
+         78         Strasbourg - Saint-Denis                    Château d'Eau             Réaumur - Sébastopol                     1.0                  2.0
+         79             Réaumur - Sébastopol         Strasbourg - Saint-Denis                   Etienne Marcel                     2.0                  2.0
+         80                   Etienne Marcel             Réaumur - Sébastopol                       Les Halles                     1.0                  NaN
+         81                       Les Halles                   Etienne Marcel                         Châtelet                     2.0                  3.0
+         82                         Châtelet                       Les Halles                             Cité                     1.0                  5.0
+         83                             Cité                         Châtelet                     Saint-Michel                     3.0                  NaN
+         84                     Saint-Michel                             Cité                            Odéon                     1.0                  1.0
+         85                            Odéon                     Saint-Michel           Saint-Germain-des-Prés                     2.0                  1.0
+         86           Saint-Germain-des-Prés                            Odéon                    Saint-Sulpice                     1.0                  NaN
+         87                    Saint-Sulpice           Saint-Germain-des-Prés                    Saint-Placide                     3.0                  NaN
+         88                    Saint-Placide                    Saint-Sulpice           Montparnasse Bienvenue                     1.0                  NaN
+         89           Montparnasse Bienvenue                    Saint-Placide                            Vavin                     2.0                  4.0
+         90                            Vavin           Montparnasse Bienvenue                          Raspail                     1.0                  NaN
+         91                          Raspail                            Vavin                Denfert-Rochereau                     2.0                  2.0
+         92                Denfert-Rochereau                          Raspail                  Mouton-Duvernet                     1.0                  1.0
+         93                  Mouton-Duvernet                Denfert-Rochereau                           Alésia                     1.0                  NaN
+         94                           Alésia                  Mouton-Duvernet                  Porte d'Orléans                     2.0                  NaN
+         95                  Porte d'Orléans                           Alésia                  Porte de Pantin                     1.0                  2.0
+         96                  Porte de Pantin                  Porte d'Orléans                            Ourcq                     2.0                  2.0
+         97                            Ourcq                  Porte de Pantin                         Laumière                     1.0                  NaN
+         98                         Laumière                            Ourcq                           Jaurès                     2.0                  NaN
+         99                           Jaurès                         Laumière                       Stalingrad                     1.0                  2.0
+        100                       Stalingrad                           Jaurès                     Gare du Nord                     2.0                  2.0
+        101                     Gare du Nord                       Stalingrad                    Gare de l'Est                     2.0                  4.0
+        102                    Gare de l'Est                     Gare du Nord               Jacques Bonsergent                     2.0                  3.0
+        103               Jacques Bonsergent                    Gare de l'Est                       République                     2.0                  NaN
+        104                       République               Jacques Bonsergent                        Oberkampf                     1.0                  3.0
+        105                        Oberkampf                       République                   Richard-Lenoir                     1.0                  1.0
+        106                   Richard-Lenoir                        Oberkampf                    Bréguet-Sabin                     3.0                  NaN
+        107                    Bréguet-Sabin                   Richard-Lenoir                         Bastille                     3.0                  NaN
+        108                         Bastille                    Bréguet-Sabin                 Quai de la Rapée                     1.0                  2.0
+        109                 Quai de la Rapée                         Bastille                Gare d'Austerlitz                     2.0                  NaN
+        110                Gare d'Austerlitz                 Quai de la Rapée                     Saint-Marcel                     1.0                  3.0
+        111                     Saint-Marcel                Gare d'Austerlitz                     Campo-Formio                     3.0                  NaN
+        112                     Campo-Formio                     Saint-Marcel                   Place d'Italie                     1.0                  NaN
+        113                   Place d'Italie                     Campo-Formio       Charles de Gaulle - Etoile                     2.0                  3.0
+        114       Charles de Gaulle - Etoile                   Place d'Italie                           Kléber                     1.0                  3.0
+        115                           Kléber       Charles de Gaulle - Etoile                        Boissière                     2.0                  NaN
+        116                        Boissière                           Kléber                        Trocadéro                     1.0                  NaN
+        117                        Trocadéro                        Boissière                            Passy                     2.0                  2.0
+        118                            Passy                        Trocadéro                       Bir-Hakeim                     1.0                  NaN
+        119                       Bir-Hakeim                            Passy                          Dupleix                     2.0                  2.0
+        120                          Dupleix                       Bir-Hakeim      La Motte-Picquet - Grenelle                     1.0                  NaN
+        121      La Motte-Picquet - Grenelle                          Dupleix                        Cambronne                     2.0                  2.0
+        122                        Cambronne      La Motte-Picquet - Grenelle                  Sèvres-Lecourbe                     1.0                  NaN
+        123                  Sèvres-Lecourbe                        Cambronne                          Pasteur                     3.0                  NaN
+        124                          Pasteur                  Sèvres-Lecourbe           Montparnasse Bienvenue                     2.0                  2.0
+        125           Montparnasse Bienvenue                          Pasteur                     Edgar Quinet                     2.0                  4.0
+        126                     Edgar Quinet           Montparnasse Bienvenue                          Raspail                     4.0                  NaN
+        127                          Raspail                     Edgar Quinet                Denfert-Rochereau                     2.0                  2.0
+        128                Denfert-Rochereau                          Raspail                    Saint-Jacques                     1.0                  2.0
+        129                    Saint-Jacques                Denfert-Rochereau                         Glacière                     2.0                  NaN
+        130                         Glacière                    Saint-Jacques                        Corvisart                     1.0                  NaN
+        131                        Corvisart                         Glacière                   Place d'Italie                     2.0                  NaN
+        132                   Place d'Italie                        Corvisart                        Nationale                     3.0                  2.0
+        133                        Nationale                   Place d'Italie                       Chevaleret                     2.0                  NaN
+        134                       Chevaleret                        Nationale                  Quai de la Gare                     1.0                  NaN
+        135                  Quai de la Gare                       Chevaleret                            Bercy                     2.0                  NaN
+        136                            Bercy                  Quai de la Gare                        Dugommier                     1.0                  1.0
+        137                        Dugommier                            Bercy                        Daumesnil                     2.0                  NaN
+        138                        Daumesnil                        Dugommier                          Bel-Air                     1.0                  1.0
+        139                          Bel-Air                        Daumesnil                           Picpus                     2.0                  NaN
+        140                           Picpus                          Bel-Air                           Nation                     3.0                  NaN
+        141                           Nation                           Picpus             Porte de la Villette                     3.0                  3.0
+        142             Porte de la Villette                           Nation                  Corentin Cariou                     3.0                  NaN
+        143                  Corentin Cariou             Porte de la Villette                           Crimée                     2.0                  NaN
+        144                           Crimée                  Corentin Cariou                           Riquet                     4.0                  NaN
+        145                           Riquet                           Crimée                       Stalingrad                     2.0                  NaN
+        146                       Stalingrad                           Riquet                      Louis Blanc                     1.0                  2.0
+        147                      Louis Blanc                       Stalingrad                   Château Landon                     2.0                  2.0
+        148                   Château Landon                      Louis Blanc                    Gare de l'Est                     1.0                  NaN
+        149                    Gare de l'Est                   Château Landon                     Poissonnière                     2.0                  3.0
+        150                     Poissonnière                    Gare de l'Est                            Cadet                     1.0                  NaN
+        151                            Cadet                     Poissonnière                      Le Peletier                     2.0                  NaN
+        152                      Le Peletier                            Cadet    Chaussée d'Antin - La Fayette                     2.0                  NaN
+        153    Chaussée d'Antin - La Fayette                      Le Peletier                            Opéra                     2.0                  2.0
+        154                            Opéra    Chaussée d'Antin - La Fayette                        Pyramides                     2.0                  3.0
+        155                        Pyramides                            Opéra   Palais Royal - Musée du Louvre                     2.0                  2.0
+        156   Palais Royal - Musée du Louvre                        Pyramides                        Pont Neuf                     1.0                  1.0
+        157                        Pont Neuf   Palais Royal - Musée du Louvre                         Châtelet                     1.0                  NaN
+        158                         Châtelet                        Pont Neuf       Pont Marie (Cité des Arts)                     3.0                  2.0
+        159       Pont Marie (Cité des Arts)                         Châtelet                  Sully - Morland                     2.0                  NaN
+        160                  Sully - Morland       Pont Marie (Cité des Arts)                          Jussieu                     3.0                  NaN
+        161                          Jussieu                  Sully - Morland                      Place Monge                     2.0                  2.0
+        162                      Place Monge                          Jussieu              Censier - Daubenton                     2.0                  NaN
+        163              Censier - Daubenton                      Place Monge                     Les Gobelins                     3.0                  NaN
+        164                     Les Gobelins              Censier - Daubenton                   Place d'Italie                     2.0                  NaN
+        165                   Place d'Italie                     Les Gobelins                          Tolbiac                     3.0                  2.0
+        166                          Tolbiac                   Place d'Italie                   Maison Blanche                     2.0                  NaN
+        167                   Maison Blanche                          Tolbiac                   Porte d'Italie                     1.0                  NaN
+        168                   Porte d'Italie                   Maison Blanche                  Porte de Choisy                     1.0                  NaN
+        169                  Porte de Choisy                   Porte d'Italie                     Porte d'Ivry                     2.0                  NaN
+        170                     Porte d'Ivry                  Porte de Choisy                   Maison Blanche                     1.0                  NaN
+        171                   Maison Blanche                     Porte d'Ivry                      Louis Blanc                     2.0                  NaN
+        172                      Louis Blanc                   Maison Blanche                           Jaurès                     1.0                  NaN
+        173                           Jaurès                      Louis Blanc                          Bolivar                     3.0                  NaN
+        174                          Bolivar                           Jaurès                  Buttes Chaumont                     1.0                  NaN
+        175                  Buttes Chaumont                          Bolivar                         Botzaris                     2.0                  NaN
+        176                         Botzaris                  Buttes Chaumont                  Place des Fêtes                     1.0                  NaN
+        177                  Place des Fêtes                         Botzaris                Pré-Saint-Gervais                     2.0                  NaN
+        178                Pré-Saint-Gervais                  Place des Fêtes                           Danube                     3.0                  NaN
+        179                           Danube                Pré-Saint-Gervais                         Botzaris                     1.0                  NaN
+        180                         Botzaris                           Danube                           Balard                     2.0                  NaN
+        181                           Balard                         Botzaris                          Lourmel                     1.0                  NaN
+        182                          Lourmel                           Balard                        Boucicaut                     2.0                  NaN
+        183                        Boucicaut                          Lourmel                      Félix Faure                     1.0                  NaN
+        184                      Félix Faure                        Boucicaut                         Commerce                     2.0                  NaN
+        185                         Commerce                      Félix Faure      La Motte-Picquet - Grenelle                     3.0                  NaN
+        186      La Motte-Picquet - Grenelle                         Commerce                  Ecole Militaire                     2.0                  3.0
+        187                  Ecole Militaire      La Motte-Picquet - Grenelle                 La Tour-Maubourg                     1.0                  NaN
+        188                 La Tour-Maubourg                  Ecole Militaire                        Invalides                     2.0                  NaN
+        189                        Invalides                 La Tour-Maubourg                         Concorde                     2.0                  2.0
+        190                         Concorde                        Invalides                        Madeleine                     3.0                  2.0
+        191                        Madeleine                         Concorde                            Opéra                     1.0                  1.0
+        192                            Opéra                        Madeleine               Richelieu - Drouot                     2.0                  3.0
+        193               Richelieu - Drouot                            Opéra                Grands Boulevards                     1.0                  2.0
+        194                Grands Boulevards               Richelieu - Drouot                   Bonne Nouvelle                     2.0                  NaN
+        195                   Bonne Nouvelle                Grands Boulevards         Strasbourg - Saint-Denis                     1.0                  NaN
+        196         Strasbourg - Saint-Denis                   Bonne Nouvelle                       République                     1.0                  2.0
+        197                       République         Strasbourg - Saint-Denis               Filles du Calvaire                     2.0                  3.0
+        198               Filles du Calvaire                       République      Saint-Sébastien - Froissart                     1.0                  NaN
+        199      Saint-Sébastien - Froissart               Filles du Calvaire                      Chemin Vert                     1.0                  NaN
+        200                      Chemin Vert      Saint-Sébastien - Froissart                         Bastille                     1.0                  NaN
+        201                         Bastille                      Chemin Vert                     Ledru-Rollin                     2.0                  2.0
+        202                     Ledru-Rollin                         Bastille             Faidherbe - Chaligny                     3.0                  NaN
+        203             Faidherbe - Chaligny                     Ledru-Rollin                Reuilly - Diderot                     3.0                  NaN
+        204                Reuilly - Diderot             Faidherbe - Chaligny                       Montgallet                     2.0                  2.0
+        205                       Montgallet                Reuilly - Diderot                        Daumesnil                     3.0                  NaN
+        206                        Daumesnil                       Montgallet                     Michel Bizot                     2.0                  1.0
+        207                     Michel Bizot                        Daumesnil                      Porte Dorée                     1.0                  NaN
+        208                      Porte Dorée                     Michel Bizot               Porte de Charenton                     2.0                  NaN
+        209               Porte de Charenton                      Porte Dorée             Porte de Saint-Cloud                     1.0                  NaN
+        210             Porte de Saint-Cloud               Porte de Charenton                         Exelmans                     2.0                  NaN
+        211                         Exelmans             Porte de Saint-Cloud            Michel-Ange - Molitor                     4.0                  NaN
+        212            Michel-Ange - Molitor                         Exelmans            Michel-Ange - Auteuil                     2.0                  2.0
+        213            Michel-Ange - Auteuil            Michel-Ange - Molitor                           Jasmin                     1.0                  1.0
+        214                           Jasmin            Michel-Ange - Auteuil                         Ranelagh                     2.0                  NaN
+        215                         Ranelagh                           Jasmin                        La Muette                     3.0                  NaN
+        216                        La Muette                         Ranelagh                  Rue de la Pompe                     2.0                  2.0
+        217                  Rue de la Pompe                        La Muette                        Trocadéro                     4.0                  NaN
+        218                        Trocadéro                  Rue de la Pompe                             Iéna                     1.0                  2.0
+        219                             Iéna                        Trocadéro                   Alma - Marceau                     2.0                  NaN
+        220                   Alma - Marceau                             Iéna            Franklin D. Roosevelt                     1.0                  2.0
+        221            Franklin D. Roosevelt                   Alma - Marceau          Saint-Philippe du Roule                     2.0                  NaN
+        222          Saint-Philippe du Roule            Franklin D. Roosevelt                       Miromesnil                     1.0                  NaN
+        223                       Miromesnil          Saint-Philippe du Roule                   Saint-Augustin                     3.0                  1.0
+        224                   Saint-Augustin                       Miromesnil                  Havre-Caumartin                     2.0                  1.0
+        225                  Havre-Caumartin                   Saint-Augustin    Chaussée d'Antin - La Fayette                     1.0                  2.0
+        226    Chaussée d'Antin - La Fayette                  Havre-Caumartin               Richelieu - Drouot                     2.0                  2.0
+        227               Richelieu - Drouot    Chaussée d'Antin - La Fayette                Grands Boulevards                     4.0                  2.0
+        228                Grands Boulevards               Richelieu - Drouot                   Bonne Nouvelle                     2.0                  NaN
+        229                   Bonne Nouvelle                Grands Boulevards         Strasbourg - Saint-Denis                     1.0                  NaN
+        230         Strasbourg - Saint-Denis                   Bonne Nouvelle                       République                     3.0                  3.0
+        231                       République         Strasbourg - Saint-Denis                        Oberkampf                     2.0                  2.0
+        232                        Oberkampf                       République                   Saint-Ambroise                     1.0                  1.0
+        233                   Saint-Ambroise                        Oberkampf                         Voltaire                     2.0                  NaN
+        234                         Voltaire                   Saint-Ambroise                         Charonne                     1.0                  NaN
+        235                         Charonne                         Voltaire                  Rue des Boulets                     2.0                  NaN
+        236                  Rue des Boulets                         Charonne                           Nation                     1.0                  NaN
+        237                           Nation                  Rue des Boulets                         Buzenval                     2.0                  3.0
+        238                         Buzenval                           Nation                       Maraîchers                     1.0                  NaN
+        239                       Maraîchers                         Buzenval               Porte de Montreuil                     2.0                  NaN
+        240               Porte de Montreuil                       Maraîchers                Gare d'Austerlitz                     3.0                  NaN
+        241                Gare d'Austerlitz               Porte de Montreuil                          Jussieu                     2.0                  3.0
+        242                          Jussieu                Gare d'Austerlitz                 Cardinal Lemoine                     1.0                  2.0
+        243                 Cardinal Lemoine                          Jussieu              Maubert - Mutualité                     2.0                  NaN
+        244              Maubert - Mutualité                 Cardinal Lemoine              Cluny - La Sorbonne                     1.0                  NaN
+        245              Cluny - La Sorbonne              Maubert - Mutualité                            Odéon                     4.0                  2.0
+        246                            Odéon              Cluny - La Sorbonne                         Mabillon                     2.0                  1.0
+        247                         Mabillon                            Odéon                Sèvres - Babylone                     1.0                  NaN
+        248                Sèvres - Babylone                         Mabillon                           Vaneau                     4.0                  2.0
+        249                           Vaneau                Sèvres - Babylone                            Duroc                     2.0                  NaN
+        250                            Duroc                           Vaneau                            Ségur                     1.0                  1.0
+        251                            Ségur                            Duroc      La Motte-Picquet - Grenelle                     1.0                  NaN
+        252      La Motte-Picquet - Grenelle                            Ségur                Avenue Emile Zola                     1.0                  2.0
+        253                Avenue Emile Zola      La Motte-Picquet - Grenelle                  Charles Michels                     2.0                  NaN
+        254                  Charles Michels                Avenue Emile Zola            Javel - André Citroën                     1.0                  NaN
+        255            Javel - André Citroën                  Charles Michels                 Eglise d'Auteuil                     2.0                  2.0
+        256                 Eglise d'Auteuil            Javel - André Citroën            Michel-Ange - Auteuil                     1.0                  NaN
+        257            Michel-Ange - Auteuil                 Eglise d'Auteuil                  Porte d'Auteuil                     2.0                  2.0
+        258                  Porte d'Auteuil            Michel-Ange - Auteuil            Michel-Ange - Molitor                     1.0                  NaN
+        259            Michel-Ange - Molitor                  Porte d'Auteuil                  Chardon Lagache                     3.0                  2.0
+        260                  Chardon Lagache            Michel-Ange - Molitor                         Mirabeau                     3.0                  NaN
+        261                         Mirabeau                  Chardon Lagache                         Châtelet                     3.0                  NaN
+        262                         Châtelet                         Mirabeau                   Hôtel de Ville                     3.0                  4.0
+        263                   Hôtel de Ville                         Châtelet                        Rambuteau                     2.0                  2.0
+        264                        Rambuteau                   Hôtel de Ville                  Arts et Métiers                     1.0                  NaN
+        265                  Arts et Métiers                        Rambuteau                       République                     2.0                  2.0
+        266                       République                  Arts et Métiers                         Goncourt                     3.0                  3.0
+        267                         Goncourt                       République                       Belleville                     2.0                  NaN
+        268                       Belleville                         Goncourt                         Pyrénées                     1.0                  2.0
+        269                         Pyrénées                       Belleville                         Jourdain                     2.0                  NaN
+        270                         Jourdain                         Pyrénées                  Place des Fêtes                     1.0                  NaN
+        271                  Place des Fêtes                         Jourdain                       Télégraphe                     2.0                  2.0
+        272                       Télégraphe                  Place des Fêtes                  Porte des Lilas                     1.0                  NaN
+        273                  Porte des Lilas                       Télégraphe             Porte de la Chapelle                     2.0                  3.0
+        274             Porte de la Chapelle                  Porte des Lilas                      Marx Dormoy                     1.0                  NaN
+        275                      Marx Dormoy             Porte de la Chapelle          Marcadet - Poissonniers                     4.0                  NaN
+        276          Marcadet - Poissonniers                      Marx Dormoy                    Jules Joffrin                     2.0                  2.0
+        277                    Jules Joffrin          Marcadet - Poissonniers           Lamarck - Caulaincourt                     1.0                  NaN
+        278           Lamarck - Caulaincourt                    Jules Joffrin                         Abbesses                     4.0                  NaN
+        279                         Abbesses           Lamarck - Caulaincourt                          Pigalle                     2.0                  NaN
+        280                          Pigalle                         Abbesses                    Saint-Georges                     1.0                  2.0
+        281                    Saint-Georges                          Pigalle            Notre-Dame-de-Lorette                     4.0                  NaN
+        282            Notre-Dame-de-Lorette                    Saint-Georges     Trinité - d'Estienne d'Orves                     1.0                  NaN
+        283     Trinité - d'Estienne d'Orves            Notre-Dame-de-Lorette                     Saint-Lazare                     2.0                  NaN
+        284                     Saint-Lazare     Trinité - d'Estienne d'Orves                        Madeleine                     1.0                  4.0
+        285                        Madeleine                     Saint-Lazare                         Concorde                     2.0                  1.0
+        286                         Concorde                        Madeleine              Assemblée Nationale                     3.0                  3.0
+        287              Assemblée Nationale                         Concorde                        Solférino                     2.0                  NaN
+        288                        Solférino              Assemblée Nationale                       Rue du Bac                     1.0                  1.0
+        289                       Rue du Bac                        Solférino                Sèvres - Babylone                     2.0                  NaN
+        290                Sèvres - Babylone                       Rue du Bac                           Rennes                     1.0                  2.0
+        291                           Rennes                Sèvres - Babylone            Notre-Dame des Champs                     1.0                  NaN
+        292            Notre-Dame des Champs                           Rennes           Montparnasse Bienvenue                     2.0                  NaN
+        293           Montparnasse Bienvenue            Notre-Dame des Champs                        Falguière                     2.0                  4.0
+        294                        Falguière           Montparnasse Bienvenue                          Pasteur                     1.0                  NaN
+        295                          Pasteur                        Falguière                      Volontaires                     2.0                  2.0
+        296                      Volontaires                          Pasteur                        Vaugirard                     NaN                  NaN
+        297                        Vaugirard                      Volontaires                       Convention                     1.0                  NaN
+        298                       Convention                        Vaugirard              Porte de Versailles                     2.0                  NaN
+        299              Porte de Versailles                       Convention                  Porte de Vanves                     1.0                  NaN
+        300                  Porte de Vanves              Porte de Versailles                        Plaisance                     2.0                  NaN
+        301                        Plaisance                  Porte de Vanves                          Pernety                     3.0                  NaN
+        302                          Pernety                        Plaisance                            Gaîté                     2.0                  NaN
+        303                            Gaîté                          Pernety           Montparnasse Bienvenue                     3.0                  NaN
+        304           Montparnasse Bienvenue                            Gaîté                            Duroc                     2.0                  4.0
+        305                            Duroc           Montparnasse Bienvenue            Saint-François-Xavier                     2.0                  2.0
+        306            Saint-François-Xavier                            Duroc                          Varenne                     2.0                  NaN
+        307                          Varenne            Saint-François-Xavier                        Invalides                     1.0                  NaN
+        308                        Invalides                          Varenne      Champs-Elysées - Clemenceau                     1.0                  2.0
+        309      Champs-Elysées - Clemenceau                        Invalides                       Miromesnil                     4.0                  1.0
+        310                       Miromesnil      Champs-Elysées - Clemenceau                     Saint-Lazare                     1.0                  2.0
+        311                     Saint-Lazare                       Miromesnil                            Liège                     2.0                  3.0
+        312                            Liège                     Saint-Lazare                  Place de Clichy                     1.0                  NaN
+        313                  Place de Clichy                            Liège                       La Fourche                     3.0                  2.0
+        314                       La Fourche                  Place de Clichy                       Guy Môquet                     1.0                  NaN
+        315                       Guy Môquet                       La Fourche              Porte de Saint-Ouen                     4.0                  NaN
+        316              Porte de Saint-Ouen                       Guy Môquet                       La Fourche                     1.0                  NaN
+        317                       La Fourche              Porte de Saint-Ouen                         Brochant                     2.0                  NaN
+        318                         Brochant                       La Fourche                  Porte de Clichy                     1.0                  NaN
+        319                  Porte de Clichy                         Brochant                  Porte de Clichy                     1.0                  2.0
+        320                  Porte de Clichy                  Porte de Clichy                    Pont Cardinet                     1.0                  NaN
+        321                    Pont Cardinet                  Porte de Clichy                     Saint-Lazare                     4.0                  NaN
+        322                     Saint-Lazare                    Pont Cardinet                        Madeleine                     2.0                  4.0
+        323                        Madeleine                     Saint-Lazare                        Pyramides                     1.0                  2.0
+        324                        Pyramides                        Madeleine                         Châtelet                     1.0                  1.0
+        325                         Châtelet                        Pyramides                     Gare de Lyon                     3.0                  4.0
+        326                     Gare de Lyon                         Châtelet                            Bercy                     3.0                  4.0
+        327                            Bercy                     Gare de Lyon               Cour Saint-Emilion                     2.0                  2.0
+        328               Cour Saint-Emilion                            Bercy Bibliothèque François Mitterrand                     1.0                  NaN
+        329 Bibliothèque François Mitterrand               Cour Saint-Emilion                       Olympiades                     2.0                  2.0
+        330                       Olympiades Bibliothèque François Mitterrand                       Olympiades                     1.0                  NaN
+        331                       Olympiades                       Olympiades                   Maison Blanche                     2.0                  NaN
+        332                   Maison Blanche                       Olympiades                             None                     1.0                  NaN
