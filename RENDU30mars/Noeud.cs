@@ -1,35 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-using System.Collections.Generic;
-using System.IO;
 
-
-
-namespace Rendu30mars
+namespace RENDU30mars
 {
     public class Noeud
     {
-        public string Nom { get; set; }
-        public List<Lien> Liens { get; set; }
+        private string nom;
+        private List<Lien> listeliens;
 
         public Noeud(string nom)
         {
-            Nom = nom;
-            Liens = new List<Lien>();
+            this.nom = nom;
+            this.listeliens = new List<Lien>(); // Initialisation de la liste
         }
 
-        public void AjouterLien(Noeud autreNoeud, double temps)
+        public string Nom
+        {
+            get { return this.nom; }
+        }
+
+        public List<Lien> Listeliens
+        {
+            get { return this.listeliens; }
+        }
+
+        public void AjouterLien(Noeud autreNoeud, int poids)
         {
             // Vérifier que le lien n'existe pas déjà pour éviter les doublons
-            if (!Liens.Any(l => (l.Noeud1 == this && l.Noeud2 == autreNoeud) || (l.Noeud1 == autreNoeud && l.Noeud2 == this)))
+            if (!listeliens.Any(l => (l.Noeud1 == this && l.Noeud2 == autreNoeud) || (l.Noeud1 == autreNoeud && l.Noeud2 == this)))
             {
-                Liens.Add(new Lien(this, autreNoeud, temps));
+                listeliens.Add(new Lien(this, autreNoeud, poids));
             }
         }
     }
-
 }

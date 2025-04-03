@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Rendu30mars
+namespace RENDU30mars
 {
     public class Graphe
     {
@@ -34,7 +33,7 @@ namespace Rendu30mars
 
                     string stationNom = colonnes[1].Trim();
                     string stationSuivante = colonnes[3].Trim();
-                    float temps = ConvertirTemps(colonnes[4]);
+                    int temps = ConvertirTemps(colonnes[4]);
 
                     // Ajouter les stations dans le dictionnaire
                     if (!Noeuds.ContainsKey(stationNom))
@@ -66,22 +65,21 @@ namespace Rendu30mars
             }
         }
 
-
-        private float ConvertirTemps(string tempsStr)
+        private int ConvertirTemps(string tempsStr)
         {
             if (string.IsNullOrWhiteSpace(tempsStr))
             {
                 Console.WriteLine("Valeur manquante pour le temps.");
-                return 0.0f;
+                return 0;
             }
 
-            if (float.TryParse(tempsStr, NumberStyles.Any, CultureInfo.InvariantCulture, out float temps))
+            if (int.TryParse(tempsStr, NumberStyles.Any, CultureInfo.InvariantCulture, out int temps))
             {
                 return temps;
             }
 
-            Console.WriteLine($"Échec de la conversion de la valeur en float : {tempsStr}");
-            return 0.0f;
+            Console.WriteLine($"Échec de la conversion de la valeur en int : {tempsStr}");
+            return 0;
         }
 
         public void AfficherGraphe()
@@ -90,7 +88,7 @@ namespace Rendu30mars
 
             foreach (var noeud in Noeuds.Values)
             {
-                foreach (var lien in noeud.Liens)
+                foreach (var lien in noeud.Listeliens)
                 {
                     string idLien = $"{lien.Noeud1.Nom}-{lien.Noeud2.Nom}";
                     string idLienInverse = $"{lien.Noeud2.Nom}-{lien.Noeud1.Nom}";
@@ -98,14 +96,12 @@ namespace Rendu30mars
                     // Vérifier si le lien n'a pas déjà été affiché
                     if (!liensAffiches.Contains(idLien) && !liensAffiches.Contains(idLienInverse))
                     {
-                        Console.WriteLine($"{lien.Noeud1.Nom} <-> {lien.Noeud2.Nom} : {lien.Temps} min");
+                        Console.WriteLine($"{lien.Noeud1.Nom} <-> {lien.Noeud2.Nom} : {lien.Poids} min");
                         liensAffiches.Add(idLien);
                     }
                 }
             }
         }
-
-        
 
         public void AfficherMatriceAdjacence()
         {
@@ -130,8 +126,5 @@ namespace Rendu30mars
                 Console.WriteLine();
             }
         }
-
-
-        
     }
 }

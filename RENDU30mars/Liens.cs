@@ -1,22 +1,38 @@
-﻿using System;
+﻿using Rendu30mars;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rendu30mars
+namespace RENDU30mars
 {
     public class Lien
     {
-        public Noeud Noeud1 { get; set; }
-        public Noeud Noeud2 { get; set; }
-        public double Temps { get; set; }
+        private Noeud noeud1;
+        private Noeud noeud2;
+        private int poids;
 
-        public Lien(Noeud noeud1, Noeud noeud2, double temps)
+        public Lien(Noeud noeud1, Noeud noeud2, int poids)
         {
-            Noeud1 = noeud1;
-            Noeud2 = noeud2;
-            Temps = temps;
+            this.noeud1 = noeud1;
+            this.noeud2 = noeud2;
+            this.poids = poids;
+        }
+
+        public Noeud Noeud1
+        {
+            get { return this.noeud1; }
+        }
+
+        public Noeud Noeud2
+        {
+            get { return this.noeud2; }
+        }
+
+        public int Poids
+        {
+            get { return this.poids; }
         }
     }
 }

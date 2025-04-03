@@ -10,8 +10,6 @@ namespace Rendu30mars
 {
     internal class Site
     {
-
-
         private MySqlConnection connection;
 
         // Constructeur pour initialiser la connexion à la base de données
@@ -657,13 +655,6 @@ namespace Rendu30mars
             } while (true);
         }
 
-
-
-
-
-
-
-
         // ================== MÉTHODES UTILITAIRES ==================
 
         private bool EstUnTexteValide(string texte)
@@ -720,6 +711,5 @@ namespace Rendu30mars
                 DeconnexionBD();
             }
         }
-
     }
 }
