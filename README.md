@@ -48,24 +48,10 @@ Liv'in Paris est une application innovante permettant le partage de repas entre 
 
 - **Langage** : C#
 - **Base de Données** : SQL
-- **Visualisation** : System.Drawing, SkiaSharp
-- **Outils** : GitHub, Looping, Overpass Turbo
 
-## Installation et Utilisation
+## Créateurs
 
-1. **Cloner le Repositoire** : `git clone https://github.com/votre-utilisateur/livin-paris.git`
-2. **Installer les Dépendances** : Utilisez un gestionnaire de paquets comme NuGet pour installer les bibliothèques nécessaires.
-3. **Configurer la Base de Données** : Suivez les instructions dans le fichier `README.md` pour configurer la base de données.
-4. **Lancer l'Application** : Exécutez l'application via l'interface console ou l'interface graphique.
-
-## Contributions
-
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou à proposer une pull request.
-
-## Licence
-
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+Ce projet a été développé par Johann Cali, Jules Brugère et Solal Chatelein.
 
 ---
 
-N'hésitez pas à consulter la documentation complète et à explorer les différentes fonctionnalités de l'application Liv'in Paris !
