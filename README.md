@@ -51,7 +51,7 @@ Liv'in Paris est une application innovante permettant le partage de repas entre 
 
 ## Créateurs
 
-Ce projet a été développé par Johann Cali, Jules Brugère et Solal Chatelein.
+Ce projet a été développé par Johann Cali, Jules Brugère et Solal Chatelain.
 
 ---
 
