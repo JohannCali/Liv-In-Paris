@@ -1,20 +1,21 @@
-﻿using System;
+﻿using RENDU30mars;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 
-namespace RENDU30mars
+namespace ProjetRendu2
 {
-    public class Graphe
+    public class Graphe<T>
     {
-        public Dictionary<string, Noeud> Noeuds { get; set; }
+        public Dictionary<T, Noeud> Noeuds { get; set; }
         public List<Noeud> ListeAdjacence { get; set; }
         public bool[,] MatriceAdjacence { get; set; }
 
         public Graphe()
         {
-            Noeuds = new Dictionary<string, Noeud>();
+            Noeuds = new Dictionary<T, Noeud>();
             ListeAdjacence = new List<Noeud>();
             MatriceAdjacence = new bool[333, 333];
         }
@@ -36,20 +37,20 @@ namespace RENDU30mars
                     int temps = ConvertirTemps(colonnes[4]);
 
                     // Ajouter les stations dans le dictionnaire
-                    if (!Noeuds.ContainsKey(stationNom))
+                    if (!Noeuds.ContainsKey((T)(object)stationNom))
                     {
-                        Noeuds[stationNom] = new Noeud(stationNom);
-                        ListeAdjacence.Add(Noeuds[stationNom]); // Ajout dans la liste d'adjacence
+                        Noeuds[(T)(object)stationNom] = new Noeud(stationNom);
+                        ListeAdjacence.Add(Noeuds[(T)(object)stationNom]); // Ajout dans la liste d'adjacence
                     }
 
-                    if (!Noeuds.ContainsKey(stationSuivante))
+                    if (!Noeuds.ContainsKey((T)(object)stationSuivante))
                     {
-                        Noeuds[stationSuivante] = new Noeud(stationSuivante);
-                        ListeAdjacence.Add(Noeuds[stationSuivante]); // Ajout dans la liste d'adjacence
+                        Noeuds[(T)(object)stationSuivante] = new Noeud(stationSuivante);
+                        ListeAdjacence.Add(Noeuds[(T)(object)stationSuivante]); // Ajout dans la liste d'adjacence
                     }
 
-                    Noeud noeud1 = Noeuds[stationNom];
-                    Noeud noeud2 = Noeuds[stationSuivante];
+                    Noeud noeud1 = Noeuds[(T)(object)stationNom];
+                    Noeud noeud2 = Noeuds[(T)(object)stationSuivante];
 
                     // Ajouter les liens dans la liste d'adjacence
                     noeud1.AjouterLien(noeud2, temps);
@@ -125,6 +126,57 @@ namespace RENDU30mars
                 }
                 Console.WriteLine();
             }
+        }
+
+        public Dictionary<T, double> Dijkstra(T depart)
+        {
+            var distances = new Dictionary<T, double>();
+            var predecesseurs = new Dictionary<T, T>();
+            var nonVisites = new HashSet<T>(Noeuds.Keys);
+
+            foreach (var noeud in Noeuds.Keys)
+            {
+                distances[noeud] = double.PositiveInfinity;
+            }
+
+            distances[depart] = 0;
+
+            while (nonVisites.Count > 0)
+            {
+                // Trouver le nœud non visité avec la plus petite distance
+                T courant = default!;
+                double minDistance = double.PositiveInfinity;
+
+                foreach (var noeud in nonVisites)
+                {
+                    if (distances[noeud] < minDistance)
+                    {
+                        minDistance = distances[noeud];
+                        courant = noeud;
+                    }
+                }
+
+                // Si aucun chemin n'est trouvé, on s'arrête
+                if (minDistance == double.PositiveInfinity)
+                    break;
+
+                nonVisites.Remove(courant);
+
+                // Mettre à jour les distances pour les voisins
+                foreach (var lien in Noeuds[courant].Listeliens)
+                {
+                    var voisin = lien.Noeud1.Nom.Equals(courant.ToString()) ? lien.Noeud2.Nom : lien.Noeud1.Nom;
+                    var nouvelleDistance = distances[courant] + lien.Poids;
+
+                    if (nouvelleDistance < distances[(T)(object)voisin])
+                    {
+                        distances[(T)(object)voisin] = nouvelleDistance;
+                        predecesseurs[(T)(object)voisin] = courant;
+                    }
+                }
+            }
+
+            return distances;
         }
     }
 }

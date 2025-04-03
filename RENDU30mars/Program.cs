@@ -2,6 +2,7 @@
 using System.IO;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Tls;
+using ProjetRendu2;
 using Rendu30mars;
 using SkiaSharp;
 using static System.Net.Mime.MediaTypeNames;
@@ -26,16 +27,61 @@ namespace RENDU30mars
             //site.CommandePlat(); 
 
 
+            Graphe<string> graphe = new Graphe<string>();
 
+            // Chargement du graphe depuis un fichier
+            graphe.ChargerDepuisFichier("metro_paris.csv");
 
+            // Exemple d'utilisation de l'algorithme de Dijkstra
+            string nomNoeudSource = "Tuileries"; // Remplacez par le nom du nœud source
+            string nomNoeudCible = "Pigalle"; // Remplacez par le nom du nœud cible
 
+            var resultatDijkstra = graphe.Dijkstra(nomNoeudSource);
 
+            // Affichage du plus court chemin vers le nœud cible
+            if (resultatDijkstra.ContainsKey(nomNoeudCible))
+            {
+                Console.WriteLine($"Le plus court chemin de {nomNoeudSource} à {nomNoeudCible} est de {resultatDijkstra[nomNoeudCible]} minutes.");
 
+                // Reconstruction du chemin
+                var chemin = ReconstruireChemin(graphe.Noeuds, nomNoeudSource, nomNoeudCible);
+                Console.WriteLine("Chemin le plus court : " + string.Join(" -> ", chemin));
+            }
+            else
+            {
+                Console.WriteLine($"Aucun chemin trouvé entre {nomNoeudSource} et {nomNoeudCible}.");
+            }
 
+            Console.WriteLine("Appuyez sur une touche pour quitter...");
+            Console.ReadKey();
+        }
 
+        static List<string> ReconstruireChemin(Dictionary<string, Noeud> noeuds, string source, string cible)
+        {
+            var chemin = new List<string>();
+            var predecesseurs = new Dictionary<string, string>();
 
+            // Initialisation des prédecesseurs
+            foreach (var noeud in noeuds.Keys)
+            {
+                predecesseurs[noeud] = null;
+            }
 
+            predecesseurs[source] = null;
 
+            // Simulation de Dijkstra pour obtenir les prédecesseurs
+            var distances = new Graphe<string>().Dijkstra(source);
+
+            // Reconstruction du chemin
+            string etape = cible;
+            while (etape != null)
+            {
+                chemin.Add(etape);
+                etape = predecesseurs[etape];
+            }
+
+            chemin.Reverse(); // Inverser pour avoir le chemin de la source à la cible
+            return chemin;
         }
 
 
@@ -105,8 +151,7 @@ namespace RENDU30mars
         //        data.SaveTo(stream);
         //        Console.WriteLine($"Image sauvegardée à l'emplacement : {filePath}");
         //    }
-        //}
-        
+        //}        
     }
 }
 
