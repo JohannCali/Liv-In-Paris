@@ -15,42 +15,37 @@ namespace RENDU30mars
     {
         static void Main()
         {
-            //string cheminFichier = "metro_paris.csv";
-            //Graphe graphe = new Graphe();
-            //graphe.ChargerDepuisFichier(cheminFichier);
-            //graphe.AfficherGraphe();
-            //graphe.AfficherMatriceAdjacence();
 
-            //Site site = new Site();
-            //site.affichage();
-            //site.Client(); 
-            //site.CommandePlat(); 
+            Site site = new Site();
+            site.affichage();
+            site.Client();
+            site.CommandePlat();
 
 
-            Graphe<string> graphe = new Graphe<string>();
+            //Graphe<string> graphe = new Graphe<string>();
 
-            // Chargement du graphe depuis un fichier
-            graphe.ChargerDepuisFichier("metro_paris.csv");
+            //// Chargement du graphe depuis un fichier
+            //graphe.ChargerDepuisFichier("metro_paris.csv");
 
-            // Exemple d'utilisation de l'algorithme de Dijkstra
-            string nomNoeudSource = "Tuileries"; // Remplacez par le nom du nœud source
-            string nomNoeudCible = "Pigalle"; // Remplacez par le nom du nœud cible
+            //// Exemple d'utilisation de l'algorithme de Dijkstra
+            //string nomNoeudSource = "Tuileries"; // Remplacez par le nom du nœud source
+            //string nomNoeudCible = "Pigalle"; // Remplacez par le nom du nœud cible
 
-            var resultatDijkstra = graphe.Dijkstra(nomNoeudSource);
+            //var resultatDijkstra = graphe.Dijkstra(nomNoeudSource);
 
-            // Affichage du plus court chemin vers le nœud cible
-            if (resultatDijkstra.ContainsKey(nomNoeudCible))
-            {
-                Console.WriteLine($"Le plus court chemin de {nomNoeudSource} à {nomNoeudCible} est de {resultatDijkstra[nomNoeudCible]} minutes.");
+            //// Affichage du plus court chemin vers le nœud cible
+            //if (resultatDijkstra.ContainsKey(nomNoeudCible))
+            //{
+            //    Console.WriteLine($"Le plus court chemin de {nomNoeudSource} à {nomNoeudCible} est de {resultatDijkstra[nomNoeudCible]} minutes.");
 
-                // Reconstruction du chemin
-                var chemin = ReconstruireChemin(graphe.Noeuds, nomNoeudSource, nomNoeudCible);
-                Console.WriteLine("Chemin le plus court : " + string.Join(" -> ", chemin));
-            }
-            else
-            {
-                Console.WriteLine($"Aucun chemin trouvé entre {nomNoeudSource} et {nomNoeudCible}.");
-            }
+            //    // Reconstruction du chemin
+            //    var chemin = ReconstruireChemin(graphe.Noeuds, nomNoeudSource, nomNoeudCible);
+            //    Console.WriteLine("Chemin le plus court : " + string.Join(" -> ", chemin));
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"Aucun chemin trouvé entre {nomNoeudSource} et {nomNoeudCible}.");
+            //}
 
             Console.WriteLine("Appuyez sur une touche pour quitter...");
             Console.ReadKey();
