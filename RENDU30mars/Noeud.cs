@@ -8,23 +8,27 @@ namespace Rendu30mars
     {
         private string nom; /// nom du noeud (ex : nom de station)
         private List<Lien> listeliens; /// tous les liens connectés à ce noeud
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> eec2a4e7593df94d40da500f86d2650cd05cb041
         public Noeud(string nom)
         {
             this.nom = nom;
             this.listeliens = new List<Lien>(); /// on initialise la liste vide des connexions
         }
-
+    
         public string Nom
         {
             get { return this.nom; } /// permet de récupérer le nom du noeud
         }
-
+    
         public List<Lien> Listeliens
         {
             get { return this.listeliens; } /// récupère tous les liens associés à ce noeud
         }
-
+    
         public void AjouterLien(Noeud autreNoeud, int poids)
         {
             /// vérifie si un lien entre les deux noeuds existe déjà (dans un sens ou dans l'autre)
