@@ -12,16 +12,16 @@ namespace Rendu30mars
     {
         static void Main()
         {
-            // exemple de tests avec la base de données (désactivés pour l’instant)
-            // Site site = new Site();
-            // site.affichage();
-            // site.Client();
-            // site.CommandePlat();
+            /// exemple de tests avec la base de données (désactivés pour l’instant)
+            /// Site site = new Site();
+            /// site.affichage();
+            /// site.Client();
+            /// site.CommandePlat();
 
             Graphe<string> graphe = new Graphe<string>();
-            graphe.ChargerDepuisFichier("metro_paris.csv"); // chargement des stations et connexions depuis un fichier CSV
+            graphe.ChargerDepuisFichier("metro_paris.csv"); /// chargement des stations et connexions depuis un fichier CSV
 
-            // test Dijkstra entre deux stations
+            /// test Dijkstra entre deux stations
             string nomNoeudSource = "Tuileries";
             string nomNoeudCible = "Pigalle";
 
@@ -29,12 +29,12 @@ namespace Rendu30mars
             Console.WriteLine($"\nDijkstra - Distance minimale de {nomNoeudSource} à {nomNoeudCible} : {distancesDijkstra[nomNoeudCible]}");
             Console.WriteLine($"Chemin : {string.Join(" -> ", graphe.ReconstruireChemin(predecessorsDijkstra, nomNoeudCible))}");
 
-            // test Bellman-Ford entre les mêmes stations
+            /// test Bellman-Ford entre les mêmes stations
             var (distancesBellmanFord, predecessorsBellmanFord) = graphe.BellmanFord(nomNoeudSource);
             Console.WriteLine($"\nBellman-Ford - Distance minimale de {nomNoeudSource} à {nomNoeudCible} : {distancesBellmanFord[nomNoeudCible]}");
             Console.WriteLine($"Chemin : {string.Join(" -> ", graphe.ReconstruireChemin(predecessorsBellmanFord, nomNoeudCible))}");
 
-            // exécution de Floyd-Warshall pour toutes les paires
+            /// exécution de Floyd-Warshall pour toutes les paires
             double[,] distancesFloydWarshall = graphe.FloydWarshall();
             Console.WriteLine("\nMatrice des distances les plus courtes (Floyd-Warshall) :");
 
@@ -42,7 +42,7 @@ namespace Rendu30mars
             {
                 for (int j = 0; j < distancesFloydWarshall.GetLength(1); j++)
                 {
-                    // affichage INF si les deux noeuds ne sont pas connectés
+                    /// affichage INF si les deux noeuds ne sont pas connectés
                     Console.Write(distancesFloydWarshall[i, j] == double.PositiveInfinity ? "INF\t" : $"{distancesFloydWarshall[i, j]}\t");
                 }
                 Console.WriteLine();
@@ -52,7 +52,7 @@ namespace Rendu30mars
             Console.ReadKey();
         }
 
-        // méthode pour dessiner un graphe à partir d’une matrice d’adjacence (optionnel)
+        /// méthode pour dessiner un graphe à partir d’une matrice d’adjacence (optionnel)
         public static void DessinerGraphe(bool[,] adjMatrix, int n, string filePath)
         {
             int width = 500, height = 500;
@@ -62,7 +62,7 @@ namespace Rendu30mars
 
             SKBitmap bitmap = new SKBitmap(width, height);
             SKCanvas canvas = new SKCanvas(bitmap);
-            canvas.Clear(SKColors.White); // fond blanc
+            canvas.Clear(SKColors.White); /// fond blanc
 
             var paintNoeud = new SKPaint
             {
@@ -86,7 +86,7 @@ namespace Rendu30mars
                 TextAlign = SKTextAlign.Center
             };
 
-            // placement des noeuds en cercle
+            /// placement des noeuds en cercle
             SKPoint[] positions = new SKPoint[n];
             for (int i = 0; i < n; i++)
             {
@@ -97,7 +97,7 @@ namespace Rendu30mars
                 );
             }
 
-            // tracé des arêtes
+            /// tracé des arêtes
             for (int i = 0; i < n; i++)
             {
                 for (int j = i + 1; j < n; j++)
@@ -109,14 +109,14 @@ namespace Rendu30mars
                 }
             }
 
-            // tracé des noeuds + leur identifiant
+            /// tracé des noeuds + leur identifiant
             for (int i = 0; i < n; i++)
             {
                 canvas.DrawCircle(positions[i], rayon, paintNoeud);
                 canvas.DrawText(i.ToString(), positions[i].X, positions[i].Y - rayon - 5, paintTexte);
             }
 
-            // sauvegarde de l’image PNG
+            /// sauvegarde de l’image PNG
             using (var image = SKImage.FromBitmap(bitmap))
             using (var data = image.Encode(SKEncodedImageFormat.Png, 100))
             using (var stream = File.OpenWrite(filePath))
