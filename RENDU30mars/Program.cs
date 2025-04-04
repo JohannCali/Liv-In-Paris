@@ -30,19 +30,32 @@ namespace RENDU30mars
             string nomNoeudSource = "Tuileries"; // Remplacez par le nom du nœud source
             string nomNoeudCible = "Pigalle"; // Remplacez par le nom du nœud cible
 
-            var (distances, predecessors) = graphe.BellmanFord(nomNoeudSource); 
+            //var (distances, predecessors) = graphe.BellmanFord(nomNoeudSource); 
+
+            double[,] distances = graphe.FloydWarshall();
+
+            // Affichage des distances les plus courtes entre toutes les paires de nœuds
+            Console.WriteLine("Matrice des distances les plus courtes (Floyd-Warshall):");
+            for (int i = 0; i < distances.GetLength(0); i++)
+            {
+                for (int j = 0; j < distances.GetLength(1); j++)
+                {
+                    Console.Write(distances[i, j] == double.PositiveInfinity ? "INF\t" : $"{distances[i, j]}\t");
+                }
+                Console.WriteLine();
+            }
 
             // Affichage du plus court chemin vers le nœud cible
-            if (distances.ContainsKey(nomNoeudCible))
-            {
-                Console.WriteLine($"Station de départ : {nomNoeudSource}");
-                Console.WriteLine($"Station d'arrivée : {nomNoeudCible}");
-                Console.WriteLine($"Le chemin le plus court est : {string.Join(" -> ", graphe.ReconstruireChemin(predecessors, nomNoeudCible))} et prend {distances[nomNoeudCible]} minutes.");
-            }
-            else
-            {
-                Console.WriteLine($"Aucun chemin trouvé entre {nomNoeudSource} et {nomNoeudCible}.");
-            }
+            //if (distances.ContainsKey(nomNoeudCible))
+            //{
+            //    Console.WriteLine($"Station de départ : {nomNoeudSource}");
+            //    Console.WriteLine($"Station d'arrivée : {nomNoeudCible}");
+            //    Console.WriteLine($"Le chemin le plus court est : {string.Join(" -> ", graphe.ReconstruireChemin(predecessors, nomNoeudCible))} et prend {distances[nomNoeudCible]} minutes.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"Aucun chemin trouvé entre {nomNoeudSource} et {nomNoeudCible}.");
+            //}
 
             Console.WriteLine("Appuyez sur une touche pour quitter...");
             Console.ReadKey();
