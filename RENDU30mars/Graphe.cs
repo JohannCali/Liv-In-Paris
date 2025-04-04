@@ -36,32 +36,32 @@ namespace RENDU30mars
                     string stationSuivante = colonnes[3].Trim();
                     int temps = ConvertirTemps(colonnes[4]);
 
-                    // Ajouter les stations dans le dictionnaire
-                    if (!Noeuds.ContainsKey((T)(object)stationNom))
+                    T key1 = (T)(object)stationNom;
+                    T key2 = (T)(object)stationSuivante;
+
+                    if (!Noeuds.ContainsKey(key1))
                     {
-                        Noeuds[(T)(object)stationNom] = new Noeud(stationNom);
-                        ListeAdjacence.Add(Noeuds[(T)(object)stationNom]); // Ajout dans la liste d'adjacence
+                        Noeuds[key1] = new Noeud(stationNom);
+                        ListeAdjacence.Add(Noeuds[key1]);
                     }
 
-                    if (!Noeuds.ContainsKey((T)(object)stationSuivante))
+                    if (!Noeuds.ContainsKey(key2))
                     {
-                        Noeuds[(T)(object)stationSuivante] = new Noeud(stationSuivante);
-                        ListeAdjacence.Add(Noeuds[(T)(object)stationSuivante]); // Ajout dans la liste d'adjacence
+                        Noeuds[key2] = new Noeud(stationSuivante);
+                        ListeAdjacence.Add(Noeuds[key2]);
                     }
 
-                    Noeud noeud1 = Noeuds[(T)(object)stationNom];
-                    Noeud noeud2 = Noeuds[(T)(object)stationSuivante];
+                    Noeud noeud1 = Noeuds[key1];
+                    Noeud noeud2 = Noeuds[key2];
 
-                    // Ajouter les liens dans la liste d'adjacence
                     noeud1.AjouterLien(noeud2, temps);
-                    noeud2.AjouterLien(noeud1, temps); // Connexion bidirectionnelle
+                    noeud2.AjouterLien(noeud1, temps);
 
-                    // Mettre à jour la matrice d'adjacence
                     int index1 = ListeAdjacence.IndexOf(noeud1);
                     int index2 = ListeAdjacence.IndexOf(noeud2);
 
                     MatriceAdjacence[index1, index2] = true;
-                    MatriceAdjacence[index2, index1] = true; // Connexion bidirectionnelle
+                    MatriceAdjacence[index2, index1] = true;
                 }
             }
         }
@@ -94,7 +94,6 @@ namespace RENDU30mars
                     string idLien = $"{lien.Noeud1.Nom}-{lien.Noeud2.Nom}";
                     string idLienInverse = $"{lien.Noeud2.Nom}-{lien.Noeud1.Nom}";
 
-                    // Vérifier si le lien n'a pas déjà été affiché
                     if (!liensAffiches.Contains(idLien) && !liensAffiches.Contains(idLienInverse))
                     {
                         Console.WriteLine($"{lien.Noeud1.Nom} <-> {lien.Noeud2.Nom} : {lien.Poids} min");
@@ -108,7 +107,6 @@ namespace RENDU30mars
         {
             Console.WriteLine("\n===== Matrice d'Adjacence =====");
 
-            // En-tête avec noms abrégés
             Console.Write("   ");
             foreach (var noeud in ListeAdjacence)
             {
@@ -116,7 +114,6 @@ namespace RENDU30mars
             }
             Console.WriteLine();
 
-            // Affichage des lignes de la matrice
             for (int i = 0; i < ListeAdjacence.Count; i++)
             {
                 Console.Write($"{ListeAdjacence[i].Nom.Substring(0, Math.Min(3, ListeAdjacence[i].Nom.Length))} ");
@@ -128,58 +125,54 @@ namespace RENDU30mars
             }
         }
 
-        public (Dictionary<T, double>, Dictionary<T, T>) Dijkstra(T depart)
+        public (Dictionary<string, float> distances, Dictionary<string, string> predecessors) Dijkstra(T source)
         {
-            var distances = new Dictionary<T, double>();
-            var predecesseurs = new Dictionary<T, T>();
+            var distances = new Dictionary<string, float>();
+            var predecessors = new Dictionary<string, string>();
             var nonVisites = new HashSet<T>(Noeuds.Keys);
 
-            foreach (var noeud in Noeuds.Keys)
+            foreach (var noeud in Noeuds.Values)
             {
-                distances[noeud] = double.PositiveInfinity;
+                distances[noeud.Nom] = float.PositiveInfinity;
+                predecessors[noeud.Nom] = null;
             }
-
-            distances[depart] = 0;
+            distances[source.ToString()] = 0;
 
             while (nonVisites.Count > 0)
             {
-                // Trouver le nœud non visité avec la plus petite distance
-                T courant = default!;
-                double minDistance = double.PositiveInfinity;
+                T courant = default(T);
+                float minDistance = float.PositiveInfinity;
 
                 foreach (var noeud in nonVisites)
                 {
-                    if (distances[noeud] < minDistance)
+                    if (distances[noeud.ToString()] < minDistance)
                     {
-                        minDistance = distances[noeud];
+                        minDistance = distances[noeud.ToString()];
                         courant = noeud;
                     }
                 }
 
-                // Si aucun chemin n'est trouvé, on s'arrête
-                if (minDistance == double.PositiveInfinity)
-                    break;
+                if (EqualityComparer<T>.Default.Equals(courant, default(T))) break;
 
                 nonVisites.Remove(courant);
 
-                // Mettre à jour les distances pour les voisins
                 foreach (var lien in Noeuds[courant].Listeliens)
                 {
-                    var voisin = lien.Noeud1.Nom.Equals(courant.ToString()) ? (T)(object)lien.Noeud2.Nom : (T)(object)lien.Noeud1.Nom;
-                    var nouvelleDistance = distances[courant] + lien.Poids;
+                    var voisin = lien.Noeud1.Nom == courant.ToString() ? lien.Noeud2.Nom : lien.Noeud1.Nom;
+                    var nouvelleDistance = distances[courant.ToString()] + lien.Poids;
 
                     if (nouvelleDistance < distances[voisin])
                     {
                         distances[voisin] = nouvelleDistance;
-                        predecesseurs[voisin] = courant;
+                        predecessors[voisin] = courant.ToString();
                     }
                 }
             }
 
-            return (distances, predecesseurs);
+            return (distances, predecessors);
         }
 
-        public (Dictionary<string, float> distances, Dictionary<string, string> predecessors) BellmanFord(string source)
+        public (Dictionary<string, float> distances, Dictionary<string, string> predecessors) BellmanFord(T source)
         {
             var distances = new Dictionary<string, float>();
             var predecessors = new Dictionary<string, string>();
@@ -189,7 +182,7 @@ namespace RENDU30mars
                 distances[noeud.Nom] = float.PositiveInfinity;
                 predecessors[noeud.Nom] = null;
             }
-            distances[source] = 0;
+            distances[source.ToString()] = 0;
 
             for (int i = 1; i < Noeuds.Count; i++)
             {
@@ -219,14 +212,12 @@ namespace RENDU30mars
             return chemin;
         }
 
-        // Algorithme de Floyd-Warshall
         public double[,] FloydWarshall()
         {
             int n = ListeAdjacence.Count;
             double[,] distances = new double[n, n];
             int[,] chemins = new int[n, n];
 
-            // Initialisation
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
@@ -240,7 +231,6 @@ namespace RENDU30mars
                 }
             }
 
-            // Remplissage des distances directes entre les noeuds
             for (int i = 0; i < n; i++)
             {
                 var noeud = ListeAdjacence[i];
@@ -252,7 +242,6 @@ namespace RENDU30mars
                 }
             }
 
-            // Algorithme de Floyd-Warshall
             for (int k = 0; k < n; k++)
             {
                 for (int i = 0; i < n; i++)

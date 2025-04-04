@@ -15,106 +15,56 @@ namespace RENDU30mars
         static void Main()
         {
 
+                                                                    /* Utilisation de le base de données */
+
+
+
             //Site site = new Site();
             //site.affichage();
             //site.Client();
             //site.CommandePlat();
 
-            // Création d'une instance de Graphe
             Graphe<string> graphe = new Graphe<string>();
-
-            // Chargement du graphe depuis un fichier
             graphe.ChargerDepuisFichier("metro_paris.csv");
 
-            // Exemple d'utilisation de l'algorithme de Bellman-Ford
-            string nomNoeudSource = "Tuileries"; // Remplacez par le nom du nœud source
-            string nomNoeudCible = "Pigalle"; // Remplacez par le nom du nœud cible
+                                                            /* Exemple d'utilisation de l'algorithme de Dijkstra */ 
+            
+            
+            string nomNoeudSource = "Tuileries";
+            string nomNoeudCible = "Pigalle";
 
-            //var (distances, predecessors) = graphe.BellmanFord(nomNoeudSource); 
+            var (distancesDijkstra, predecessorsDijkstra) = graphe.Dijkstra(nomNoeudSource);
+            Console.WriteLine($"\nDijkstra - Distance minimale de {nomNoeudSource} à {nomNoeudCible} : {distancesDijkstra[nomNoeudCible]}");
+            Console.WriteLine($"Chemin : {string.Join(" -> ", graphe.ReconstruireChemin(predecessorsDijkstra, nomNoeudCible))}");
 
-            double[,] distances = graphe.FloydWarshall();
+                                                            
+            
+                                                            /* Exemple d'utilisation de l'algorithme de Bellman-Ford */
+            
+            
+            
+            var (distancesBellmanFord, predecessorsBellmanFord) = graphe.BellmanFord(nomNoeudSource);
+            Console.WriteLine($"\nBellman-Ford - Distance minimale de {nomNoeudSource} à {nomNoeudCible} : {distancesBellmanFord[nomNoeudCible]}");
+            Console.WriteLine($"Chemin : {string.Join(" -> ", graphe.ReconstruireChemin(predecessorsBellmanFord, nomNoeudCible))}");
 
-            // Affichage des distances les plus courtes entre toutes les paires de nœuds
-            Console.WriteLine("Matrice des distances les plus courtes (Floyd-Warshall):");
-            for (int i = 0; i < distances.GetLength(0); i++)
+                                                            
+            
+                                                            /* Exécution de l'algorithme de Floyd-Warshall */
+            
+            
+            double[,] distancesFloydWarshall = graphe.FloydWarshall();
+            Console.WriteLine("\nMatrice des distances les plus courtes (Floyd-Warshall):");
+            for (int i = 0; i < distancesFloydWarshall.GetLength(0); i++)
             {
-                for (int j = 0; j < distances.GetLength(1); j++)
+                for (int j = 0; j < distancesFloydWarshall.GetLength(1); j++)
                 {
-                    Console.Write(distances[i, j] == double.PositiveInfinity ? "INF\t" : $"{distances[i, j]}\t");
+                    Console.Write(distancesFloydWarshall[i, j] == double.PositiveInfinity ? "INF\t" : $"{distancesFloydWarshall[i, j]}\t");
                 }
                 Console.WriteLine();
             }
 
-            // Affichage du plus court chemin vers le nœud cible
-            //if (distances.ContainsKey(nomNoeudCible))
-            //{
-            //    Console.WriteLine($"Station de départ : {nomNoeudSource}");
-            //    Console.WriteLine($"Station d'arrivée : {nomNoeudCible}");
-            //    Console.WriteLine($"Le chemin le plus court est : {string.Join(" -> ", graphe.ReconstruireChemin(predecessors, nomNoeudCible))} et prend {distances[nomNoeudCible]} minutes.");
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"Aucun chemin trouvé entre {nomNoeudSource} et {nomNoeudCible}.");
-            //}
-
             Console.WriteLine("Appuyez sur une touche pour quitter...");
             Console.ReadKey();
-
-            //Graphe<string> graphe = new Graphe<string>();
-
-            //// Chargement du graphe depuis un fichier
-            //graphe.ChargerDepuisFichier("metro_paris.csv");
-
-            //// Exemple d'utilisation de l'algorithme de Dijkstra
-            //string nomNoeudSource = "Tuileries"; // Remplacez par le nom du nœud source
-            //string nomNoeudCible = "Pigalle"; // Remplacez par le nom du nœud cible
-
-            //var resultatDijkstra = graphe.Dijkstra(nomNoeudSource);
-
-            //// Affichage du plus court chemin vers le nœud cible
-            //if (resultatDijkstra.ContainsKey(nomNoeudCible))
-            //{
-            //    Console.WriteLine($"Le plus court chemin de {nomNoeudSource} à {nomNoeudCible} est de {resultatDijkstra[nomNoeudCible]} minutes.");
-
-            //    // Reconstruction du chemin
-            //    var chemin = ReconstruireChemin(graphe.Noeuds, nomNoeudSource, nomNoeudCible);
-            //    Console.WriteLine("Chemin le plus court : " + string.Join(" -> ", chemin));
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"Aucun chemin trouvé entre {nomNoeudSource} et {nomNoeudCible}.");
-            //}
-
-            //Console.WriteLine("Appuyez sur une touche pour quitter...");
-            //Console.ReadKey();
-        }
-
-        static List<string> ReconstruireChemin(Dictionary<string, Noeud> noeuds, string source, string cible)
-        {
-            var chemin = new List<string>();
-            var predecesseurs = new Dictionary<string, string>();
-
-            // Initialisation des prédecesseurs
-            foreach (var noeud in noeuds.Keys)
-            {
-                predecesseurs[noeud] = null;
-            }
-
-            predecesseurs[source] = null;
-
-            // Simulation de Dijkstra pour obtenir les prédecesseurs
-            var distances = new Graphe<string>().Dijkstra(source);
-
-            // Reconstruction du chemin
-            string etape = cible;
-            while (etape != null)
-            {
-                chemin.Add(etape);
-                etape = predecesseurs[etape];
-            }
-
-            chemin.Reverse(); // Inverser pour avoir le chemin de la source à la cible
-            return chemin;
         }
 
 
