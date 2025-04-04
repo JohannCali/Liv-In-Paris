@@ -66,7 +66,7 @@ namespace Rendu30mars.Tests
             Assert.AreEqual(4, distances[0, 3]);
 
             Assert.AreEqual(1, distances[1, 0]);
-            Assert.AreEqual(0, distances[1, 1]);
+            Assert.AreEqual(0, distances[1, 1]);j
             Assert.AreEqual(2, distances[1, 2]);
             Assert.AreEqual(5, distances[1, 3]);
 

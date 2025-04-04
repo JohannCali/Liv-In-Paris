@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-﻿
-=======
->>>>>>> eec2a4e7593df94d40da500f86d2650cd05cb041
+
 using System;
 using System.IO;
 using MySql.Data.MySqlClient;

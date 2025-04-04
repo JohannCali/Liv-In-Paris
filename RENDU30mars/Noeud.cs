@@ -8,11 +8,7 @@ namespace Rendu30mars
     {
         private string nom; /// nom du noeud (ex : nom de station)
         private List<Lien> listeliens; /// tous les liens connectés à ce noeud
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> eec2a4e7593df94d40da500f86d2650cd05cb041
         public Noeud(string nom)
         {
             this.nom = nom;
