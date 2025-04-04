@@ -5,7 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 
-namespace ProjetRendu2
+namespace RENDU30mars
 {
     public class Graphe<T>
     {
@@ -128,7 +128,7 @@ namespace ProjetRendu2
             }
         }
 
-        public Dictionary<T, double> Dijkstra(T depart)
+        public (Dictionary<T, double>, Dictionary<T, T>) Dijkstra(T depart)
         {
             var distances = new Dictionary<T, double>();
             var predecesseurs = new Dictionary<T, T>();
@@ -165,13 +165,105 @@ namespace ProjetRendu2
                 // Mettre à jour les distances pour les voisins
                 foreach (var lien in Noeuds[courant].Listeliens)
                 {
-                    var voisin = lien.Noeud1.Nom.Equals(courant.ToString()) ? lien.Noeud2.Nom : lien.Noeud1.Nom;
+                    var voisin = lien.Noeud1.Nom.Equals(courant.ToString()) ? (T)(object)lien.Noeud2.Nom : (T)(object)lien.Noeud1.Nom;
                     var nouvelleDistance = distances[courant] + lien.Poids;
 
-                    if (nouvelleDistance < distances[(T)(object)voisin])
+                    if (nouvelleDistance < distances[voisin])
                     {
-                        distances[(T)(object)voisin] = nouvelleDistance;
-                        predecesseurs[(T)(object)voisin] = courant;
+                        distances[voisin] = nouvelleDistance;
+                        predecesseurs[voisin] = courant;
+                    }
+                }
+            }
+
+            return (distances, predecesseurs);
+        }
+
+        public (Dictionary<string, float> distances, Dictionary<string, string> predecessors) BellmanFord(string source)
+        {
+            var distances = new Dictionary<string, float>();
+            var predecessors = new Dictionary<string, string>();
+
+            foreach (var noeud in Noeuds.Values)
+            {
+                distances[noeud.Nom] = float.PositiveInfinity;
+                predecessors[noeud.Nom] = null;
+            }
+            distances[source] = 0;
+
+            for (int i = 1; i < Noeuds.Count; i++)
+            {
+                foreach (var noeud in Noeuds.Values)
+                {
+                    foreach (var lien in noeud.Listeliens)
+                    {
+                        if (distances[lien.Noeud1.Nom] + lien.Poids < distances[lien.Noeud2.Nom])
+                        {
+                            distances[lien.Noeud2.Nom] = distances[lien.Noeud1.Nom] + lien.Poids;
+                            predecessors[lien.Noeud2.Nom] = lien.Noeud1.Nom;
+                        }
+                    }
+                }
+            }
+
+            return (distances, predecessors);
+        }
+
+        public List<string> ReconstruireChemin(Dictionary<string, string> predecessors, string destination)
+        {
+            var chemin = new List<string>();
+            for (string noeud = destination; noeud != null; noeud = predecessors[noeud])
+            {
+                chemin.Insert(0, noeud);
+            }
+            return chemin;
+        }
+
+        // Algorithme de Floyd-Warshall
+        public double[,] FloydWarshall()
+        {
+            int n = ListeAdjacence.Count;
+            double[,] distances = new double[n, n];
+            int[,] chemins = new int[n, n];
+
+            // Initialisation
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (i == j)
+                        distances[i, j] = 0;
+                    else
+                        distances[i, j] = double.PositiveInfinity;
+
+                    chemins[i, j] = -1;
+                }
+            }
+
+            // Remplissage des distances directes entre les noeuds
+            for (int i = 0; i < n; i++)
+            {
+                var noeud = ListeAdjacence[i];
+                foreach (var lien in noeud.Listeliens)
+                {
+                    int j = ListeAdjacence.IndexOf(lien.Noeud2);
+                    distances[i, j] = lien.Poids;
+                    chemins[i, j] = i;
+                }
+            }
+
+            // Algorithme de Floyd-Warshall
+            for (int k = 0; k < n; k++)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (distances[i, k] + distances[k, j] < distances[i, j])
+                        {
+                            distances[i, j] = distances[i, k] + distances[k, j];
+                            chemins[i, j] = chemins[k, j];
+                        }
                     }
                 }
             }
