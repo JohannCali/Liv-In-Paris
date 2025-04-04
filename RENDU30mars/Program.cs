@@ -2,7 +2,6 @@
 using System.IO;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Tls;
-using ProjetRendu2;
 using Rendu30mars;
 using SkiaSharp;
 using static System.Net.Mime.MediaTypeNames;
@@ -16,11 +15,37 @@ namespace RENDU30mars
         static void Main()
         {
 
-            Site site = new Site();
-            site.affichage();
-            site.Client();
-            site.CommandePlat();
+            //Site site = new Site();
+            //site.affichage();
+            //site.Client();
+            //site.CommandePlat();
 
+            // Création d'une instance de Graphe
+            Graphe<string> graphe = new Graphe<string>();
+
+            // Chargement du graphe depuis un fichier
+            graphe.ChargerDepuisFichier("metro_paris.csv");
+
+            // Exemple d'utilisation de l'algorithme de Bellman-Ford
+            string nomNoeudSource = "Tuileries"; // Remplacez par le nom du nœud source
+            string nomNoeudCible = "Pigalle"; // Remplacez par le nom du nœud cible
+
+            var (distances, predecessors) = graphe.BellmanFord(nomNoeudSource); 
+
+            // Affichage du plus court chemin vers le nœud cible
+            if (distances.ContainsKey(nomNoeudCible))
+            {
+                Console.WriteLine($"Station de départ : {nomNoeudSource}");
+                Console.WriteLine($"Station d'arrivée : {nomNoeudCible}");
+                Console.WriteLine($"Le chemin le plus court est : {string.Join(" -> ", graphe.ReconstruireChemin(predecessors, nomNoeudCible))} et prend {distances[nomNoeudCible]} minutes.");
+            }
+            else
+            {
+                Console.WriteLine($"Aucun chemin trouvé entre {nomNoeudSource} et {nomNoeudCible}.");
+            }
+
+            Console.WriteLine("Appuyez sur une touche pour quitter...");
+            Console.ReadKey();
 
             //Graphe<string> graphe = new Graphe<string>();
 
@@ -47,8 +72,8 @@ namespace RENDU30mars
             //    Console.WriteLine($"Aucun chemin trouvé entre {nomNoeudSource} et {nomNoeudCible}.");
             //}
 
-            Console.WriteLine("Appuyez sur une touche pour quitter...");
-            Console.ReadKey();
+            //Console.WriteLine("Appuyez sur une touche pour quitter...");
+            //Console.ReadKey();
         }
 
         static List<string> ReconstruireChemin(Dictionary<string, Noeud> noeuds, string source, string cible)
