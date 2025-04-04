@@ -1,4 +1,4 @@
-﻿using RENDU30mars;
+using Rendu30mars;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -9,36 +9,38 @@ namespace Rendu30mars
 {
     public class Graphe<T>
     {
-        public Dictionary<T, Noeud> Noeuds { get; set; }
-        public List<Noeud> ListeAdjacence { get; set; }
-        public bool[,] MatriceAdjacence { get; set; }
+        public Dictionary<T, Noeud> Noeuds { get; set; } /// dictionnaire qui associe chaque valeur T à un objet Noeud
+        public List<Noeud> ListeAdjacence { get; set; } /// liste utilisée pour parcourir les sommets dans l’ordre d’ajout
+        public bool[,] MatriceAdjacence { get; set; } /// matrice booléenne pour représenter les connexions entre noeuds
 
         public Graphe()
         {
             Noeuds = new Dictionary<T, Noeud>();
             ListeAdjacence = new List<Noeud>();
-            MatriceAdjacence = new bool[333, 333];
+            MatriceAdjacence = new bool[333, 333]; /// taille fixe pour simplifier, on suppose 333 noeuds max
         }
 
         public void ChargerDepuisFichier(string cheminFichier)
         {
             using (StreamReader lecteur = new StreamReader(cheminFichier))
             {
-                lecteur.ReadLine(); // Ignorer l'en-tête
+                lecteur.ReadLine(); /// on ignore la 1ère ligne (en-tête CSV)
                 string ligne;
 
                 while ((ligne = lecteur.ReadLine()) != null)
                 {
-                    var colonnes = ligne.Split(',');
-                    if (colonnes.Length < 6) continue;
+                    var colonnes = ligne.Split(','); /// on découpe la ligne CSV
+                    if (colonnes.Length < 6) continue; /// ligne invalide ou incomplète
 
-                    string stationNom = colonnes[1].Trim();
-                    string stationSuivante = colonnes[3].Trim();
-                    int temps = ConvertirTemps(colonnes[4]);
+                    string stationNom = colonnes[1].Trim(); /// nom de la station actuelle
+                    string stationSuivante = colonnes[3].Trim(); /// nom de la station suivante
+                    int temps = ConvertirTemps(colonnes[4]); /// temps de trajet entre les deux
 
+                                                             /// conversion générique pour le dictionnaire
                     T key1 = (T)(object)stationNom;
                     T key2 = (T)(object)stationSuivante;
 
+                    /// ajout si pas déjà existant
                     if (!Noeuds.ContainsKey(key1))
                     {
                         Noeuds[key1] = new Noeud(stationNom);
@@ -54,12 +56,13 @@ namespace Rendu30mars
                     Noeud noeud1 = Noeuds[key1];
                     Noeud noeud2 = Noeuds[key2];
 
-                    noeud1.AjouterLien(noeud2, temps);
-                    noeud2.AjouterLien(noeud1, temps);
+                    noeud1.AjouterLien(noeud2, temps); /// ajout du lien aller
+                    noeud2.AjouterLien(noeud1, temps); /// ajout du lien retour
 
                     int index1 = ListeAdjacence.IndexOf(noeud1);
                     int index2 = ListeAdjacence.IndexOf(noeud2);
 
+                    /// mise à jour de la matrice d’adjacence
                     MatriceAdjacence[index1, index2] = true;
                     MatriceAdjacence[index2, index1] = true;
                 }
@@ -85,7 +88,7 @@ namespace Rendu30mars
 
         public void AfficherGraphe()
         {
-            HashSet<string> liensAffiches = new HashSet<string>();
+            HashSet<string> liensAffiches = new HashSet<string>(); /// évite les doublons
 
             foreach (var noeud in Noeuds.Values)
             {
@@ -97,7 +100,7 @@ namespace Rendu30mars
                     if (!liensAffiches.Contains(idLien) && !liensAffiches.Contains(idLienInverse))
                     {
                         Console.WriteLine($"{lien.Noeud1.Nom} <-> {lien.Noeud2.Nom} : {lien.Poids} min");
-                        liensAffiches.Add(idLien);
+                        liensAffiches.Add(idLien); /// on mémorise le lien pour pas le répéter
                     }
                 }
             }
@@ -110,7 +113,7 @@ namespace Rendu30mars
             Console.Write("   ");
             foreach (var noeud in ListeAdjacence)
             {
-                Console.Write($"{noeud.Nom.Substring(0, Math.Min(3, noeud.Nom.Length))} ");
+                Console.Write($"{noeud.Nom.Substring(0, Math.Min(3, noeud.Nom.Length))} "); /// abréviation du nom pour gain de place
             }
             Console.WriteLine();
 
@@ -127,22 +130,23 @@ namespace Rendu30mars
 
         public (Dictionary<string, float> distances, Dictionary<string, string> predecessors) Dijkstra(T source)
         {
-            var distances = new Dictionary<string, float>();
-            var predecessors = new Dictionary<string, string>();
-            var nonVisites = new HashSet<T>(Noeuds.Keys);
+            var distances = new Dictionary<string, float>(); /// stocke la distance minimale trouvée
+            var predecessors = new Dictionary<string, string>(); /// permet de reconstruire le chemin
+            var nonVisites = new HashSet<T>(Noeuds.Keys); /// ensemble des sommets encore à visiter
 
             foreach (var noeud in Noeuds.Values)
             {
                 distances[noeud.Nom] = float.PositiveInfinity;
                 predecessors[noeud.Nom] = null;
             }
-            distances[source.ToString()] = 0;
+            distances[source.ToString()] = 0; /// point de départ
 
             while (nonVisites.Count > 0)
             {
                 T courant = default(T);
                 float minDistance = float.PositiveInfinity;
 
+                /// on choisit le noeud non visité avec la plus petite distance connue
                 foreach (var noeud in nonVisites)
                 {
                     if (distances[noeud.ToString()] < minDistance)
@@ -152,10 +156,11 @@ namespace Rendu30mars
                     }
                 }
 
-                if (EqualityComparer<T>.Default.Equals(courant, default(T))) break;
+                if (EqualityComparer<T>.Default.Equals(courant, default(T))) break; /// plus rien d’atteignable
 
                 nonVisites.Remove(courant);
 
+                /// mise à jour des distances pour les voisins
                 foreach (var lien in Noeuds[courant].Listeliens)
                 {
                     var voisin = lien.Noeud1.Nom == courant.ToString() ? lien.Noeud2.Nom : lien.Noeud1.Nom;
@@ -184,6 +189,7 @@ namespace Rendu30mars
             }
             distances[source.ToString()] = 0;
 
+            /// on répète |V|-1 fois le processus de relaxation des arêtes
             for (int i = 1; i < Noeuds.Count; i++)
             {
                 foreach (var noeud in Noeuds.Values)
@@ -205,9 +211,10 @@ namespace Rendu30mars
         public List<string> ReconstruireChemin(Dictionary<string, string> predecessors, string destination)
         {
             var chemin = new List<string>();
+            /// on remonte les prédécesseurs depuis la destination jusqu’à la source
             for (string noeud = destination; noeud != null; noeud = predecessors[noeud])
             {
-                chemin.Insert(0, noeud);
+                chemin.Insert(0, noeud); /// on insère au début pour avoir le chemin dans le bon sens
             }
             return chemin;
         }
@@ -215,8 +222,8 @@ namespace Rendu30mars
         public double[,] FloydWarshall()
         {
             int n = ListeAdjacence.Count;
-            double[,] distances = new double[n, n];
-            int[,] chemins = new int[n, n];
+            double[,] distances = new double[n, n]; /// matrice des distances minimales
+            int[,] chemins = new int[n, n]; /// matrice des précédents (utile si on veut reconstruire les chemins plus tard)
 
             for (int i = 0; i < n; i++)
             {
@@ -231,6 +238,7 @@ namespace Rendu30mars
                 }
             }
 
+            /// initialisation des distances connues (liens directs)
             for (int i = 0; i < n; i++)
             {
                 var noeud = ListeAdjacence[i];
@@ -242,6 +250,7 @@ namespace Rendu30mars
                 }
             }
 
+            /// on applique l’algorithme pour chaque triplet (i, j, k)
             for (int k = 0; k < n; k++)
             {
                 for (int i = 0; i < n; i++)
@@ -251,7 +260,7 @@ namespace Rendu30mars
                         if (distances[i, k] + distances[k, j] < distances[i, j])
                         {
                             distances[i, j] = distances[i, k] + distances[k, j];
-                            chemins[i, j] = chemins[k, j];
+                            chemins[i, j] = chemins[k, j]; /// mise à jour du chemin optimal
                         }
                     }
                 }
