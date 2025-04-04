@@ -5,7 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 
-namespace RENDU30mars
+namespace Rendu30mars
 {
     public class Graphe<T>
     {
