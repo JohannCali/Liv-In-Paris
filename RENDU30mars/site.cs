@@ -111,6 +111,49 @@ namespace Rendu30mars
             }
         }
 
+                public bool VerifierIdentifiants(string email, string motDePasse)
+        {
+            string query = "SELECT COUNT(*) FROM Utilisateur WHERE Email = @Email AND Mot_de_Passe = @Mot_dePasse";
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+
+            // Paramétrage de la requête
+            cmd.Parameters.AddWithValue("@Email", email);
+            cmd.Parameters.AddWithValue("@Mot_dePasse", motDePasse);
+
+            try
+            {
+                Console.WriteLine("Vérification de la connexion à la base de données...");
+                // S'assurer que la connexion est ouverte avant d'exécuter la commande
+                if (connection.State != System.Data.ConnectionState.Open)
+                {
+                    Console.WriteLine("Connexion fermée, tentative d'ouverture...");
+                    connection.Open();  // Ouvrir la connexion si elle n'est pas déjà ouverte
+                }
+
+                Console.WriteLine("Exécution de la requête SQL...");
+                // Exécution de la commande et récupération du résultat
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                Console.WriteLine($"Nombre d'utilisateurs trouvés : {count}");
+
+                // Si l'utilisateur existe, retourner true
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de la vérification des identifiants : " + ex.Message);
+                return false;  // Retourner false en cas d'erreur
+            }
+            finally
+            {
+                // Toujours fermer la connexion après la requête
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    connection.Close();  // Fermer la connexion
+                }
+            }
+        }
+
         public void PreparationPlat()
         {
             Console.WriteLine("Bienvenue dans l'espace préparation !");
