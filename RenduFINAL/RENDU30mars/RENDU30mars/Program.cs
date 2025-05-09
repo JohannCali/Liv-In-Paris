@@ -7,7 +7,7 @@ namespace Rendu30mars
     public class Program
     {
         // CHAÎNE DE CONNEXION A MODIFIER POUR CHAQUE UTILISATEUR !
-        static string chaineDeConnexion = "SERVER=localhost;PORT=3306;DATABASE=LIV;UID=root;PASSWORD=Thomas_mange1rat";
+        static string chaineDeConnexion = "SERVER=localhost;PORT=3306;DATABASE=LIV;UID=root;PASSWORD=VOTREmdp";
 
         // Méthode principale avec l'écran de sélection
         // Méthode pour afficher l'écran de connexion ou d'inscription
