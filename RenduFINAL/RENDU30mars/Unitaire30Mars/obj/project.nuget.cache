@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "dFMQxozIu9RomuVFlz15ktlWs47JysgK7aA4dITWfFnZ+lXz9Gz3ByJj+UzBMYdBKJzZVbawbAY+wFyukOvYAQ==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\solal\\ESILV\\A2 (2024-2025)\\Informatique\\Problème scientifique informatique\\RENDU30mars\\RENDU30mars\\Unitaire30Mars\\Unitaire30Mars.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Le projet Rendu30mars n'est pas compatible avec net7.0 (.NETCoreApp,Version=v7.0). Le projet Rendu30mars prend en charge : net8.0 (.NETCoreApp,Version=v8.0)",
+      "libraryId": "Rendu30mars",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
+}
